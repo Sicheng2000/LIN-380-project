@@ -1,4 +1,99 @@
 ---
-title: "Curate data"
+title: "Curate"
 ---
 
+# Load packages
+
+```{r}
+#| label: setup
+#| message: false
+
+library(dplyr)        # manipulating data
+library(readr)        # writing and reading data
+library(qtalrkit) # to generate a `data_dictionary` file
+library(fs)           # interacting with file system
+```
+
+# Read
+
+```{r}
+#| label: read-csv
+#| message: false
+
+CAR_ST_df <-
+read.csv("data/original/CAR_ST.csv")
+
+CAR_TT_df <- read.csv("data/original/CAR_TT.csv")
+```
+
+# Tidy
+
+```{r}
+#| label: tidy-data
+#| message: false
+
+CAR_ST_df <-
+  CAR_ST_df |>
+  select(
+  sentence_id,
+  type,
+  lines
+  )
+
+CAR_TT_df <-
+  CAR_TT_df |>
+  select(
+  sentence_id,
+  type,
+  lines
+  )
+```
+
+# Write
+
+```{r}
+#| label: write-data
+
+if(!file.exists("data/derived/CAR_ST_curated.csv")){
+  write_csv(
+  x = CAR_ST_df, 
+  file = "data/derived/CAR_ST_curated.csv" 
+)}
+
+if(!file.exists("data/derived/CAR_TT_curated.csv")){
+  write_csv(
+  x = CAR_TT_df, 
+  file = "data/derived/CAR_TT_curated.csv" 
+)}
+```
+
+# Documentation
+
+## Data dictionary
+
+```{r}
+#| label: create-data-dictionary
+#| message: false
+
+if(!file.exists("data/derived/CAR_ST_curated_dd.csv")){
+  create_data_dictionary(
+  data = CAR_ST_df, 
+  file_path = "data/derived/CAR_ST_curated_dd.csv" 
+)}
+
+if(!file.exists("data/derived/CAR_TT_curated_dd.csv")){
+  create_data_dictionary(
+  data = CAR_TT_df, 
+  file_path = "data/derived/CAR_TT_curated_dd.csv" 
+)}
+```
+
+## Project structure
+
+```{r}
+#| label: show-directory-structure
+#| echo: false
+
+#
+dir_tree(recurse = 2)
+```

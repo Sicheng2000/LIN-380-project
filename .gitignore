@@ -23,3 +23,8 @@
 
 /.quarto/
 /_site/
+.Rproj.user
+
+# Data
+
+data/original/*

@@ -1,5 +1,5 @@
 project:
-  title: "Web project" # Project title
+  title: "Reader-Oriented Translation Approach: A Case Study on Translating Biomedical Literature" # Project title
   type: website
   execute-dir: project
   render:
@@ -13,8 +13,8 @@ project:
 website:
   page-navigation: true # Enable page navigation
   reader-mode: true # Enable reader mode
-  site-url: "https://username.github.io/repo" # Website URL
-  repo-url: https://github.com/username/repo # Repository URL
+  site-url: "https://Sicheng2000.github.io/LIN-380-project" # Website URL
+  repo-url: https://github.com/Sicheng2000/LIN-380-project # Repository URL
   repo-actions: [source, issue] # Repository actions
   sidebar:
     style: "docked" # Sidebar style

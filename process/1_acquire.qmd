@@ -2,3 +2,91 @@
 title: "Acquire data"
 ---
 
+# Load packages
+
+*  Loading `readr` for writing and reading data.
+*  Loading `dplyr` for manipulating data.
+*  Loading `fs` for interacting with file system.
+*    Load `qtalrkit` to generate a `data_origin` file.
+
+```{r}
+#| label: setup-packages
+#| message: false
+
+# Load packages
+library(readr) # writing and reading data
+library(dplyr) # manipulating data
+library(fs) # interacting with file system
+library(qtalrkit) # to generate a `data_origin` file
+```
+
+# Read files
+
+```{r}
+#| label: read-texts
+#| message: false
+
+CAR_ST_lines <-
+  read_lines("data/original/CAR_ST.txt") # reading the text by lines
+
+file_cn <- "data/original/CAR_TT.txt"
+
+Encoding(file_cn) <- "UTF-8"
+
+CAR_TT_lines <-
+  read_lines(file_cn) # reading the text by lines
+```
+
+# Write files into csv.
+
+```{r}
+#| label: write-files-csv.
+#| message: false
+
+CAR_ST_lines_df <-
+  tibble(
+  type = "Source",
+  lines = CAR_ST_lines
+  ) |> mutate (
+  sentence_id = row_number()
+  )
+
+CAR_TT_lines_df <-
+  tibble(
+  type = "Target",
+  lines = CAR_TT_lines
+  ) |> mutate (
+  sentence_id = row_number()
+  )
+
+if(!file.exists("data/original/CAR_ST.csv")){
+  write_csv(CAR_ST_lines_df,
+  file = "data/original/CAR_ST.csv")}
+
+if(!file.exists("data/original/CAR_TT.csv")){write_csv(CAR_TT_lines_df,
+  file = "data/original/CAR_TT.csv")}
+```
+
+## Document the data
+
+The project structure:
+
+```{r}
+#| label: dir-tree
+#| echo: False
+
+# Create a tree of the project structure
+dir_tree(recurse = 2) # only show the first two levels
+```
+
+## Data origin file
+Saving data information in origin file.
+
+```{r}
+#| label: read data_origin
+#| message: false
+
+if (!file.exists("data/original/data_origin.csv")) {
+  create_data_origin("data/original/data_origin.csv")
+  }
+```

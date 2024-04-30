@@ -1,0 +1,4 @@
+variable,name,variable_type,description
+Category,category of metadiscourse,character,according to Hyland's category (2004)
+Num_EN,number of metadiscourse in the source text,numeric,total number of metadiscourse in the source text
+Num_CN,number of metadiscourse in the target text,numeric,total number of metadiscourse in the target text

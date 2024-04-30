@@ -2,3 +2,872 @@
 title: "Transform dataset"
 ---
 
+# Load packages
+
+```{r load-packages}
+#| label: load-packages
+#| message: false
+
+# Load packages
+library(readr)        # reading/ writing datasets
+library(stringr)      # match words  
+library(knitr)        # for `kable()` function
+library(dplyr)        # basic data manipulation
+library(tidytext)     # text manipulation
+library(qtalrkit)     # data dictionary creation
+library(ggplot2)      # plotting
+library(fs)           # file system operations
+library(tibble)       # print data frames
+library(kableExtra)   # creating formatted tables
+```
+
+# Read files
+
+```{r}
+#| label: read-files
+#| message: false
+
+ST_df <-
+  read_csv("data/derived/CAR_ST_curated.csv")
+
+TT_df <-
+  read_csv("data/derived/CAR_TT_curated.csv")
+```
+
+# Transform
+
+## Counting hedges
+
+For English hedges' number
+
+```{r}
+#| label: match-hedges-en
+#| message: false
+
+hedg_may_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Mm]ay\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedg_typ_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Tt]ypically\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedg_rel_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Rr]elatively\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedg_sli_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]lightly\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedg_pro_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Pp]robably\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedg_sug_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]uggest.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+hedges_num_EN = hedg_may_num + hedg_typ_num + hedg_rel_num + hedg_sli_num + hedg_pro_num + hedg_sug_num
+```
+
+For Mandarin hedges' number
+
+```{r}
+#| label: match-hedges-cn
+#| message: false
+
+hedg_yi_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*一定程度.*")) |>
+  summarise(num_sentences = n())
+
+hedg_ke_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\可能.*")) |>
+  summarise(num_sentences = n())
+
+hedg_ji_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*几乎.*")) |>
+  summarise(num_sentences = n())
+
+hedg_ky_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*可以说是.*")) |>
+  summarise(num_sentences = n())
+
+hedg_l_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*略有.*")) |>
+  summarise(num_sentences = n())
+
+hedges_num_CN = hedg_yi_num + hedg_ke_num + hedg_ji_num + hedg_ky_num + hedg_l_num
+```
+
+## Counting boosters
+
+For English boosters' number
+
+```{r}
+#| label: match-boosters-en
+#| message: false
+
+bo_es_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ee]specially\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_su_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]ubstantially\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_si_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]ignificantly\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_dr_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Dd]ramatically\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_pr_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Pp]recisely\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_me_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Mm]erely\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_pa_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Pp]articularly\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_in_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ii]n\\s*particular\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_ve_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Vv]ery\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_wi_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ww]ithout\\s*any\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_de_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Dd]emonstrate.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_ind_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ii]ndicate.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+bo_ver_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Vv]erif.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+boosters_num_EN = bo_es_num + bo_su_num + bo_si_num +bo_dr_num + bo_pr_num + bo_me_num + bo_pa_num + bo_in_num + bo_ve_num + bo_wi_num + bo_de_num + bo_ind_num + bo_ver_num
+```
+
+For Mandarin boosters' number
+
+```{r}
+#| label: match-boosters-cn
+#| message: false
+
+bo_bh_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*不会.*")) |>
+  summarise(num_sentences = n())
+
+bo_wf_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\无法.*")) |>
+  summarise(num_sentences = n())
+
+bo_bz_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*不再.*")) |>
+  summarise(num_sentences = n())
+
+bo_wx_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*无需.*")) |>
+  summarise(num_sentences = n())
+
+bo_bd_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*不对.*")) |>
+  summarise(num_sentences = n())
+
+bo_jb_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*均不.*")) |>
+  summarise(num_sentences = n())
+
+bo_gs_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\更是.*")) |>
+  summarise(num_sentences = n())
+
+bo_bx_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*必需.*")) |>
+  summarise(num_sentences = n())
+
+bo_jn_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*就能.*")) |>
+  summarise(num_sentences = n())
+
+bo_rh_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*任何.*")) |>
+  summarise(num_sentences = n())
+
+bo_dd_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*大大.*")) |>
+  summarise(num_sentences = n())
+
+bo_yq_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\尤其.*")) |>
+  summarise(num_sentences = n())
+
+bo_zy_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*只有.*")) |>
+  summarise(num_sentences = n())
+
+bo_j_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*仅.*")) |>
+  summarise(num_sentences = n())
+
+bo_z_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*最.*")) |>
+  summarise(num_sentences = n())
+
+bo_ji_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*极.*")) |>
+  summarise(num_sentences = n())
+
+bo_mx_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\明显.*")) |>
+  summarise(num_sentences = n())
+
+bo_xz_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*显著.*")) |>
+  summarise(num_sentences = n())
+
+bo_zs_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*证实.*")) |>
+  summarise(num_sentences = n())
+
+bo_js_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*揭示.*")) |>
+  summarise(num_sentences = n())
+
+bo_zm_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*证明.*")) |>
+  summarise(num_sentences = n())
+
+bo_yz_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\验证.*")) |>
+  summarise(num_sentences = n())
+
+bo_bcz_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*不存在.*")) |>
+  summarise(num_sentences = n())
+
+boosters_num_CN = bo_bh_num + bo_wf_num + bo_bz_num + bo_wx_num + bo_bd_num + bo_jb_num + bo_gs_num + bo_bx_num + bo_jn_num + bo_rh_num + bo_dd_num + bo_yq_num + bo_zy_num + bo_j_num + bo_z_num + bo_ji_num + bo_mx_num + bo_zs_num + bo_js_num + bo_zm_num + bo_yz_num + bo_bcz_num
+```
+
+## Counting attitude markers
+
+For English attitude markers' number
+
+```{r}
+#| label: match-attitude-markers-en
+#| message: false
+
+att_dif_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Dd]ifficult\\b.*")) |>
+  summarise(num_sentences = n())
+
+att_sig_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]ignificant\\b.*")) |>
+  summarise(num_sentences = n())
+
+attitude_num_EN = att_dif_num + att_sig_num
+```
+
+For Mandarin attitude markers' number
+
+```{r}
+#| label: match-attitude -markers-cn
+#| message: false
+
+att_yw_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*有望.*")) |>
+  summarise(num_sentences = n())
+
+att_n_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\难.*")) |>
+  summarise(num_sentences = n())
+
+attitude_num_CN = att_yw_num + att_n_num
+```
+
+## Counting engagement markers
+
+For English engagement markers' number
+
+```{r}
+#| label: match-engagement-markers-en
+#| message: false
+
+eng_gi_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Gg]iven\\b.*")) |>
+  summarise(num_sentences = n())
+
+engagement_num_EN = eng_gi_num
+```
+
+For Mandarin engagement markers' number
+
+```{r}
+#| label: match-engagement -markers-cn
+#| message: false
+
+eng_sm_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*说明.*")) |>
+  summarise(num_sentences = n())
+
+engagement_num_CN = eng_sm_num
+```
+
+## Counting self-mentions
+
+For English self-mentions' number
+
+```{r}
+#| label: match-self-mentions-en
+#| message: false
+
+sel_we_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ww]e\\b.*")) |>
+  summarise(num_sentences = n())
+
+sel_ou_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Oo]ur\\b.*")) |>
+  summarise(num_sentences = n())
+
+self_num_EN = sel_we_num + sel_ou_num
+```
+
+For Mandarin self-mentions' number
+
+```{r}
+#| label: match-self-mentions-cn
+#| message: false
+
+sel_wm_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*我们.*")) |>
+  summarise(num_sentences = n())
+
+self_num_CN = sel_wm_num
+```
+
+## Counting transitions
+
+For English transitions' number
+
+```{r}
+#| label: match-transitions-en
+#| message: false
+
+tr_ho_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Hh]owever\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_wh_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ww]hile\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_bu_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Bb]ut\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_thu_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Tt]hus\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_in_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ii]n\\s*contrast(?:\\sto)?\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_ad_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Aa]dditionally\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_mo_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Mm]oreover\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_al_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Aa]lso\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_st_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ss]till\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_the_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Tt]herefore\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_as_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Aa]s\\s*such\\b.*")) |>
+  summarise(num_sentences = n())
+
+tr_an_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Aa]nd\\b.*")) |>
+  summarise(num_sentences = n())
+
+transitions_num_EN = tr_ho_num + tr_wh_num + tr_bu_num + tr_thu_num + tr_in_num + tr_ad_num + tr_mo_num + tr_al_num + tr_st_num + tr_the_num + tr_as_num + tr_an_num 
+```
+
+For Mandarin transitions' number
+
+```{r}
+#| label: match-transitions-cn
+#| message: false
+
+tr_d_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\但.*")) |>
+  summarise(num_sentences = n())
+
+tr_re_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*然而.*")) |>
+  summarise(num_sentences = n())
+
+tr_e_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*而.*")) |>
+  summarise(num_sentences = n())
+
+tr_sr_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*虽然.*")) |>
+  summarise(num_sentences = n())
+
+tr_ds_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\但是.*")) |>
+  summarise(num_sentences = n())
+
+tr_q_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*且.*")) |>
+  summarise(num_sentences = n())
+
+tr_ce_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*从而.*")) |>
+  summarise(num_sentences = n())
+
+tr_rc_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*如此.*")) |>
+  summarise(num_sentences = n())
+
+tr_yy_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\由于.*")) |>
+  summarise(num_sentences = n())
+
+tr_zy_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*这样一来.*")) |>
+  summarise(num_sentences = n())
+
+tr_yw_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*因为.*")) |>
+  summarise(num_sentences = n())
+
+tr_sy_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*所以.*")) |>
+  summarise(num_sentences = n())
+
+tr_yc_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\因此.*")) |>
+  summarise(num_sentences = n())
+
+tr_sh_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*随后.*")) |>
+  summarise(num_sentences = n())
+
+tr_rg_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*如果.*")) |>
+  summarise(num_sentences = n())
+
+tr_r_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*若.*")) |>
+  summarise(num_sentences = n())
+
+tr_h_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\或.*")) |>
+  summarise(num_sentences = n())
+
+tr_ts_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*同时.*")) |>
+  summarise(num_sentences = n())
+
+tr_yj_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*以及.*")) |>
+  summarise(num_sentences = n())
+
+tr_ren_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*仍.*")) |>
+  summarise(num_sentences = n())
+
+tr_he_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\和.*")) |>
+  summarise(num_sentences = n())
+
+tr_y_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*也.*")) |>
+  summarise(num_sentences = n())
+
+tr_xb_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*相比.*")) |>
+  summarise(num_sentences = n())
+
+tr_bin_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*并.*")) |>
+  summarise(num_sentences = n())
+
+transitions_num_CN = tr_d_num + tr_re_num + tr_e_num + tr_sr_num + tr_ds_num + tr_q_num + tr_ce_num + tr_rc_num + tr_yy_num + tr_zy_num + tr_yw_num + tr_sy_num + tr_yc_num + tr_sh_num + tr_rg_num + tr_r_num + tr_h_num + tr_ts_num + tr_yj_num + tr_ren_num + tr_he_num + tr_y_num + tr_xb_num + tr_bin_num
+```
+
+## Counting frame markers
+
+For English frame markers' number
+
+```{r}
+#| label: match-frame-markers-en
+#| message: false
+
+fr_fi_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ff]irst.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+fr_th_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Tt]hen\\b.*")) |>
+  summarise(num_sentences = n())
+
+fr_fu_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ff]urther\\b.*")) |>
+  summarise(num_sentences = n())
+
+fr_re_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Rr]ecently\\b.*")) |>
+  summarise(num_sentences = n())
+
+fr_he_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Hh]ere\\b.*")) |>
+  summarise(num_sentences = n())
+
+fr_ta_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Tt]aken\\s*together\\b.*")) |>
+  summarise(num_sentences = n())
+
+frame_num_EN = fr_fi_num + fr_th_num +fr_fu_num + fr_re_num + fr_he_num + fr_ta_num
+```
+
+For Mandarin frame markers' number
+
+```{r}
+#| label: match-frame-markers-cn
+#| message: false
+
+fr_sx_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*首先.*")) |>
+  summarise(num_sentences = n())
+
+fr_xs_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\先是.*")) |>
+  summarise(num_sentences = n())
+
+fr_dc_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\第.次.*")) |>
+  summarise(num_sentences = n())
+
+fr_zs_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*这是.*")) |>
+  summarise(num_sentences = n())
+
+fr_db_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*第.部分.*")) |>
+  summarise(num_sentences = n())
+
+fr_jb_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*进一步.*")) |>
+  summarise(num_sentences = n())
+
+frame_num_CN = fr_sx_num + fr_xs_num + fr_dc_num + fr_zs_num + fr_db_num + fr_jb_num
+```
+
+## Counting endophoric markers
+
+For English endophoric markers' number
+
+```{r}
+#| label: match-endophoric markers-en
+#| message: false
+
+end_fi_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ff]ig\\b.*")) |>
+  summarise(num_sentences = n())
+
+end_vi_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Vv]ideo\\b.*")) |>
+  summarise(num_sentences = n())
+
+end_me_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\bMethods\\b.*")) |>
+  summarise(num_sentences = n())
+
+end_as_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Aa]s\\s*describe.*\\b.*")) |>
+  summarise(num_sentences = n())
+
+endophoric_num_EN = end_fi_num + end_vi_num + end_me_num + end_as_num
+```
+
+For Mandarin endophoric markers' number
+
+```{r}
+#| label: match-endophoric -markers-cn
+#| message: false
+
+end_jt_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*见图.*")) |>
+  summarise(num_sentences = n())
+
+end_ru_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\如图.*")) |>
+  summarise(num_sentences = n())
+
+end_bc_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*补充数据图.*")) |>
+  summarise(num_sentences = n())
+
+end_flt_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\附录图.*")) |>
+  summarise(num_sentences = n())
+
+end_js_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*技术原理部分.*")) |>
+  summarise(num_sentences = n())
+
+end_fa_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\方案.*")) |>
+  summarise(num_sentences = n())
+
+end_sp_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*附录视频.*")) |>
+  summarise(num_sentences = n())
+
+end_ss_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\上述.*")) |>
+  summarise(num_sentences = n())
+
+end_xq_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*先前.*")) |>
+  summarise(num_sentences = n())
+
+endophoric_num_CN = end_jt_num + end_ru_num + end_bc_num + end_flt_num + end_js_num + end_fa_num + end_sp_num + end_ss_num + end_xq_num
+```
+
+## Counting code glosses
+
+For English code glosses' number
+
+```{r}
+#| label: match-code-glosses-en
+#| message: false
+
+co_fo_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ff]or\\s*instance\\b.*")) |>
+  summarise(num_sentences = n())
+
+co_in_num <- 
+  ST_df |>
+ filter(str_detect(lines, ".*\\b[Ii]ncluding\\b.*")) |>
+  summarise(num_sentences = n())
+
+code_num_EN = co_fo_num + co_in_num
+```
+
+For Mandarin code glosses' number
+
+```{r}
+#| label: match-code-glosses-cn
+#| message: false
+
+co_j_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*即.*")) |>
+  summarise(num_sentences = n())
+
+co_g_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\该.*")) |>
+  summarise(num_sentences = n())
+
+co_qz_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*其中.*")) |>
+  summarise(num_sentences = n())
+
+co_bk_num <- 
+  TT_df |>
+ filter(str_detect(lines, ".*\\包括.*")) |>
+  summarise(num_sentences = n())
+
+code_num_CN = co_j_num + co_g_num + co_qz_num + co_bk_num
+```
+
+## Metadiscourse marker tibble
+
+```{r}
+#| label: create-metadiscourse-tibble
+#| message: false
+
+meta_tbl <- tibble(
+  Category = c("hedges", "boosters",  "attitude markers", "engagement markers", "self-mentions", "transitions", "frame markers", "endophoric markers", "code glosses"),
+  Num_EN = c(as.numeric(hedges_num_EN), as.numeric(boosters_num_EN),  as.numeric(attitude_num_EN), as.numeric(engagement_num_EN), as.numeric(self_num_EN), as.numeric(transitions_num_EN), as.numeric(frame_num_EN), as.numeric(endophoric_num_EN), as.numeric(code_num_EN)),
+  Num_CN = c(as.numeric(hedges_num_CN), as.numeric(boosters_num_CN), as.numeric(attitude_num_CN), as.numeric(engagement_num_CN), as.numeric(self_num_CN), as.numeric(transitions_num_CN), as.numeric(frame_num_CN), as.numeric(endophoric_num_CN), as.numeric(code_num_CN))
+) 
+```
+
+# Documentation
+
+## Data dictionary
+
+```{r}
+#| label: write-data
+
+# Write the dataset
+if(!file.exists("data/derived/meta_num.csv")){
+  write_csv(meta_tbl, "data/derived/meta_num.csv")}
+
+# Create the data dictionary
+if(!file.exists("data/derived/meta_num_dd.csv")){
+  create_data_dictionary(
+  meta_tbl,
+  "data/derived/meta_num_dd.csv"
+)}
+```
+
+## Project structure
+
+```{r}
+#| label: dir-structure
+
+# List the contents of the data directory
+dir_tree(recurse = 2)
+```

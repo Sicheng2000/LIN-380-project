@@ -1,0 +1,4 @@
+variable,name,variable_type,description
+sentence_id,sentence id,integer,the number of sentence
+type,text type,character, target text
+lines,lines,character,text in lines
