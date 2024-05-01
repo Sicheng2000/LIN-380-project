@@ -1026,7 +1026,7 @@ trans_tbl
 
 # Analysis
 
-Based on my inquiry, `Is the number of metadiscourse markers greater in the target text than in the source text?`, my analysis is focused on inferential analysis. With a dataset transformed to contain the number of metadiscourse markers in both the source and target texts, I plan to compare them by category to calculate the `p-value` and `confidence interval`. The null hypothesis posits that there is no difference in metadiscourse markers between the target and source texts.
+Based on my inquiry, `Is the number of metadiscourse markers greater in the target text than in the source text?`, my analysis is focused on inferential analysis and univariate analysis by comparing the mean. With a dataset transformed to contain the number of metadiscourse markers in both the source and target texts, I plan to compare them by category to calculate the `p-value` and `confidence interval`. The null hypothesis posits that there is no difference in metadiscourse markers between the target and source texts. The alternative hypothesis is that the number of metadiscourse markers in the target text is greater  than ones in the source text. 
 
 # References
 

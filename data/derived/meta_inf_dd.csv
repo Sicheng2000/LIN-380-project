@@ -1,0 +1,5 @@
+variable,name,variable_type,description
+Category_id,the number of category,integer,to identify the category of metadiscourse markers
+Category,the category of metadiscourse markers,character,according to Hyland's category (2004)
+Text_type,the type of the text,character,source text or target text
+Num,the number of metadiscourse markers,numeric,total number of metadiscourse markers

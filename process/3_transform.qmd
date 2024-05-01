@@ -13,12 +13,11 @@ library(readr)        # reading/ writing datasets
 library(stringr)      # match words  
 library(knitr)        # for `kable()` function
 library(dplyr)        # basic data manipulation
-library(tidytext)     # text manipulation
 library(qtalrkit)     # data dictionary creation
-library(ggplot2)      # plotting
 library(fs)           # file system operations
 library(tibble)       # print data frames
 library(kableExtra)   # creating formatted tables
+library(htmlTable)
 ```
 
 # Read files
@@ -838,10 +837,84 @@ code_num_CN = co_j_num + co_g_num + co_qz_num + co_bk_num
 #| message: false
 
 meta_tbl <- tibble(
-  Category = c("hedges", "boosters",  "attitude markers", "engagement markers", "self-mentions", "transitions", "frame markers", "endophoric markers", "code glosses"),
-  Num_EN = c(as.numeric(hedges_num_EN), as.numeric(boosters_num_EN),  as.numeric(attitude_num_EN), as.numeric(engagement_num_EN), as.numeric(self_num_EN), as.numeric(transitions_num_EN), as.numeric(frame_num_EN), as.numeric(endophoric_num_EN), as.numeric(code_num_EN)),
-  Num_CN = c(as.numeric(hedges_num_CN), as.numeric(boosters_num_CN), as.numeric(attitude_num_CN), as.numeric(engagement_num_CN), as.numeric(self_num_CN), as.numeric(transitions_num_CN), as.numeric(frame_num_CN), as.numeric(endophoric_num_CN), as.numeric(code_num_CN))
+  Category = c("hedges", 
+  "boosters",  
+  "attitude markers", 
+  "engagement markers", 
+  "self-mentions", 
+  "transitions", 
+  "frame markers", 
+  "endophoric markers", 
+  "code glosses"),
+  Num_EN = c(as.numeric(hedges_num_EN), 
+  as.numeric(boosters_num_EN),  
+  as.numeric(attitude_num_EN), 
+  as.numeric(engagement_num_EN), 
+  as.numeric(self_num_EN), 
+  as.numeric(transitions_num_EN), 
+  as.numeric(frame_num_EN), 
+  as.numeric(endophoric_num_EN), 
+  as.numeric(code_num_EN)),
+  Num_CN = c(as.numeric(hedges_num_CN), 
+  as.numeric(boosters_num_CN), 
+  as.numeric(attitude_num_CN), 
+  as.numeric(engagement_num_CN), 
+  as.numeric(self_num_CN), 
+  as.numeric(transitions_num_CN), 
+  as.numeric(frame_num_CN), 
+  as.numeric(endophoric_num_CN), 
+  as.numeric(code_num_CN))
 ) 
+
+meta_inf_tbl <- tibble(
+  Category = rep(c("hedges", 
+  "boosters",  
+  "attitude markers", 
+  "engagement markers", 
+  "self-mentions", 
+  "transitions", 
+  "frame markers", 
+  "endophoric markers", 
+  "code glosses"), 
+  times = 2),
+  Num = c(as.numeric(hedges_num_EN), 
+  as.numeric(boosters_num_EN),  
+  as.numeric(attitude_num_EN), 
+  as.numeric(engagement_num_EN), 
+  as.numeric(self_num_EN), 
+  as.numeric(transitions_num_EN), 
+  as.numeric(frame_num_EN), 
+  as.numeric(endophoric_num_EN), 
+  as.numeric(code_num_EN), 
+  as.numeric(hedges_num_CN), 
+  as.numeric(boosters_num_CN), 
+  as.numeric(attitude_num_CN), 
+  as.numeric(engagement_num_CN), 
+  as.numeric(self_num_CN), 
+  as.numeric(transitions_num_CN), 
+  as.numeric(frame_num_CN), 
+  as.numeric(endophoric_num_CN), 
+  as.numeric(code_num_CN)),
+Text_type = rep(c("ST", "TT"), 
+  each = 9)) |>
+  mutate (
+  Category_id = row_number()
+  )
+
+meta_inf_tbl <- 
+  meta_inf_tbl |>
+  select (Category_id,
+  Category,
+  Text_type,
+  Num)
+
+meta_kbl <-
+  meta_tbl |> 
+  kable() |> 
+  pack_rows("Interactional resources", 1, 5) |> 
+  pack_rows("Interactive resources", 6, 9)
+
+meta_kbl
 ```
 
 # Documentation
@@ -855,11 +928,31 @@ meta_tbl <- tibble(
 if(!file.exists("data/derived/meta_num.csv")){
   write_csv(meta_tbl, "data/derived/meta_num.csv")}
 
+if(!file.exists("data/derived/meta_inf.csv")){
+  write_csv(meta_inf_tbl, "data/derived/meta_inf.csv")}
+
+# Write the kable
+if(!file.exists("data/derived/meta_num.html")){
+  meta_num_html <- htmlTable(meta_kbl, 
+  rnames = FALSE, 
+  align = "ccc", 
+  caption = "Meta Table",
+  css.cell = "padding-left: 2em;")
+  
+  writeLines(as.character(meta_num_html), "data/derived/meta_num.html")
+}
+
 # Create the data dictionary
 if(!file.exists("data/derived/meta_num_dd.csv")){
   create_data_dictionary(
   meta_tbl,
   "data/derived/meta_num_dd.csv"
+  )}
+
+if(!file.exists("data/derived/meta_inf_dd.csv")){
+  create_data_dictionary(
+ meta_inf_tbl,
+  "data/derived/meta_inf_dd.csv"
 )}
 ```
 

@@ -1,0 +1,19 @@
+Category_id,Category,Text_type,Num
+1,hedges,ST,9
+2,boosters,ST,29
+3,attitude markers,ST,4
+4,engagement markers,ST,1
+5,self-mentions,ST,43
+6,transitions,ST,95
+7,frame markers,ST,18
+8,endophoric markers,ST,70
+9,code glosses,ST,2
+10,hedges,TT,7
+11,boosters,TT,65
+12,attitude markers,TT,5
+13,engagement markers,TT,1
+14,self-mentions,TT,44
+15,transitions,TT,165
+16,frame markers,TT,13
+17,endophoric markers,TT,83
+18,code glosses,TT,23
