@@ -1,5 +1,5 @@
 ---
-title: "Presentations"
+title: "Reader-Oriented Translation Approach"
 listing:
   id: presentation-listing
   contents: slides
@@ -10,9 +10,346 @@ page-layout: full
 title-block-banner: false
 ---
 
-
-## Latest presentations
-
 ::: {#presentation-listing}
+::: Introduction
+::: Literature review
+::: Research question
+::: Data preparation methods
+::: Data analysis methods
+::: Expected results
+::: References
 :::
 
+```{r load-packages}
+#| label: load-packages
+
+# Load packages
+library(readr)        # reading/ writing datasets
+library(stringr)      # match words  
+library(knitr)        # for `kable()` function
+library(dplyr)        # basic data manipulation
+library(tidytext)     # text manipulation
+library(qtalrkit)     # data dictionary creation
+library(ggplot2)      # plotting
+library(fs)           # file system operations
+library(tibble)       # print data frames
+library(kableExtra)   # creating formatted tables
+library(infer)      # for statistical inference
+library(skimr)      # for descriptive statistics
+library(janitor)    # for cross-tabulation
+```
+
+## Introduction
+
+![China's Pharmaceutical Market](market.png){fig-align=center width="75%"}
+
+::: {.notes}
+
+The Chinese biopharmaceutical market is predicted to grow twice times the global average because of the growing aging population, and with the goverment's support. Yet, the scarcity of professionals with dual expertise in biomedicine and financial investment stifles innovation in biopharmaceutical firms.  Biomedical texts often contain complex sentences loaded with specialized jargon and abbreviations, posing challenges for translation.
+
+:::
+
+## Literature review
+
+::: {.callout-tip title="Gap"}
+
+Translation options in biomedical texts primarily focuses on scholars, experts, and individuals in the biomedical field, few studies focus on readers lacking a biomedical background.
+
+:::
+
+- Informative text (transferring information)
+- Literal translation and addressing the differences between Chinese and English
+
+- Operative text (persuading readers to take action)
+- Skopos theory (prioritizing purpose)
+
+::: {.notes}
+
+Guided by operative text and Skopos theory, I concluded translation methods for biomedical literature targetting on lay person especially investors.
+
+:::
+
+**Metadiscourse Markers**, an effective technique for enhancing readers' comprehension [@perez2002metadiscourse, @reitbauer2001you, @camiciottoli2003metadiscourse]
+
+![@hyland2004metadiscourse](meta.png){fig-align=center width="35%"}
+
+## Research question
+
+::: {.callout-tip title="Question"}
+
+Is the number of metadiscourse markers greater in the target text than in the source text?
+
+:::
+
+## Data preparation methods
+
+- **Acquisition**
+
+```{r}
+#| label: read-texts
+#| message: True
+#| echo: True
+
+CAR_ST_lines <-
+  read_lines("data/original/CAR_ST.txt") # reading the text by lines
+
+file_cn <- "data/original/CAR_TT.txt"
+
+Encoding(file_cn) <- "UTF-8"
+
+CAR_TT_lines <-
+  read_lines(file_cn) # reading the text by lines
+```
+
+```{r}
+#| label: write-files-csv.
+#| message: True
+#| echo: True
+
+CAR_ST_lines_df <-
+  tibble(
+  type = "Source",
+  lines = CAR_ST_lines
+  ) |> mutate (
+  sentence_id = row_number()
+  )
+
+CAR_TT_lines_df <-
+  tibble(
+  type = "Target",
+  lines = CAR_TT_lines
+  ) |> mutate (
+  sentence_id = row_number()
+  )
+
+if(!file.exists("data/original/CAR_ST.csv")){
+  write_csv(CAR_ST_lines_df,
+  file = "data/original/CAR_ST.csv")}
+
+if(!file.exists("data/original/CAR_TT.csv")){write_csv(CAR_TT_lines_df,
+  file = "data/original/CAR_TT.csv")}
+```
+
+```{r}
+#| label: preview-acquired
+
+meta_acq_ST <-
+  read_csv("data/original/CAR_ST.csv")
+
+meta_acq_TT <-
+  read_csv("data/original/CAR_TT.csv")
+
+meta_acq_ST
+meta_acq_TT
+```
+
+- **Curation**
+
+```{r}
+#| label: tidy-data
+#| message: True
+#| echo: True
+
+CAR_ST_lines_df <-
+  CAR_ST_lines_df |>
+  select(
+  sentence_id,
+  type,
+  lines
+  )
+
+CAR_TT_lines_df <-
+  CAR_TT_lines_df |>
+  select(
+  sentence_id,
+  type,
+  lines
+  )
+```
+
+```{r}
+#| label: preview-curated
+
+meta_cur_ST <-
+  read_csv("data/derived/CAR_ST_curated.csv")
+
+meta_cur_TT <-
+  read_csv("data/derived/CAR_TT_curated.csv")
+
+meta_cur_ST
+meta_cur_TT
+```
+
+- **Transformation**
+
+```{r}
+#| label: preview-transformed
+
+meta_num <-
+  read_csv("data/derived/meta_num.csv")
+
+meta_kbl <-
+  meta_num |> 
+  kable() |> 
+  pack_rows("Interactional resources", 1, 5) |> 
+  pack_rows("Interactive resources", 6, 9)
+
+meta_kbl
+```
+
+## Data analysis methods
+
+- **Preview**
+
+```{r}
+#| label: read-files
+
+meta_tbl <-
+  read_csv("data/derived/meta_inf.csv")
+
+meta_tbl 
+```
+
+- **Identify**
+
+```{r}
+#| label: map-hypothesis
+#| message: True
+#| echo: True
+
+# Dataset
+meta_tbl 
+
+# Specify the relationship
+meta_spec <-
+  meta_tbl |>
+  specify(Num ~ Text_type)
+
+# Preview
+meta_spec
+```
+
+- **Inspect**
+
+```{r}
+#| label: assess-distribution
+#| message: True
+#| echo: True
+
+# Density plot
+meta_tbl |>
+  ggplot(aes(x = Num, fill = Text_type)) +
+  geom_density(alpha = 0.75) +
+  labs(
+  x = "Metadiscourse markers number",
+  y = "Density",
+  fill = "Text type"
+  )
+
+meta_tbl |>
+  ggplot(aes(x = Text_type, y = Num, fill = Text_type)) +
+  geom_boxplot(notch = TRUE) +
+  labs(
+  x = "Text type",
+  y = "Metadiscourse markers number",
+  fill = "Text type"
+  )
+
+ggplot(meta_tbl, aes(x = Num, color = Text_type)) +
+  stat_ecdf() +
+  labs(
+  x = "Metadiscourse markers number",
+  y = "ECDF",
+  color = "Text type"
+  )
+```
+
+- **Interrogate**
+
+```{r}
+#| label: calculate-observed-
+#| message: True
+#| echo: True
+
+meta_obs <-
+  meta_spec |>
+  # Target Text - Source Text
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_obs
+```
+
+```{r}
+#| label: generate-null-distribution
+#| message: True
+#| echo: True
+
+meta_null <-
+  meta_spec |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_null |> visualize() +
+  shade_p_value(obs_stat = meta_obs, direction = "greater")
+```
+
+```{r}
+#| label: calculate-p-value
+#| message: True
+#| echo: True
+
+meta_p <-
+  meta_null |>
+  get_p_value(obs_stat = meta_obs, direction = "greater")
+
+meta_p
+```
+
+```{r}
+#| label: generate-resampling-distribution
+#| message: True
+#| echo: True
+
+meta_boot <-
+  meta_spec |>
+  generate(reps = 1000, type = "bootstrap") |>
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_boot |> visualize()
+```
+
+```{r}
+#| label: calculate-confidence-interval
+#| message: True
+#| echo: True
+
+meta_ci <-
+  meta_boot |>
+  get_confidence_interval(level = 0.95)
+
+meta_ci
+```
+
+- **Interpret**
+
+```{r}
+#| label: evaluate
+#| message: false
+
+# Evaluate the p-value
+meta_p
+
+# Evaluate the confidence interval
+meta_ci
+
+meta_boot |>
+  visualize() +
+  shade_confidence_interval(meta_ci)
+```
+
+## Expected results
+
+There is no difference in metadiscourse markers between the target and source texts.
+
+## References
