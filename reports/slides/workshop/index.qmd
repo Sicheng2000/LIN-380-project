@@ -88,8 +88,8 @@ Is the number of metadiscourse markers greater in the target text than in the so
 
 ```{r}
 #| label: read-texts
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 CAR_ST_lines <-
   read_lines("data/original/CAR_ST.txt") # reading the text by lines
@@ -106,8 +106,8 @@ CAR_TT_lines <-
 
 ```{r}
 #| label: write-files-csv.
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 CAR_ST_lines_df <-
   tibble(
@@ -152,8 +152,8 @@ meta_acq_TT
 
 ```{r}
 #| label: tidy-data
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 CAR_ST_lines_df <-
   CAR_ST_lines_df |>
@@ -221,8 +221,8 @@ meta_tbl
 
 ```{r}
 #| label: map-hypothesis
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 # Dataset
 meta_tbl 
@@ -258,8 +258,8 @@ meta_tbl |>
 
 ```{r}
 #| label: assess-distribution-boxplot
-#| message: True
-#| echo: True
+#| message: false
+#| echo: true
 
 meta_tbl |>
   ggplot(aes(x = Text_type, y = Num, fill = Text_type)) +
@@ -275,8 +275,8 @@ meta_tbl |>
 
 ```{r}
 #| label: assess-distribution-ecdf
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 ggplot(meta_tbl, aes(x = Num, color = Text_type)) +
   stat_ecdf() +
@@ -291,8 +291,8 @@ ggplot(meta_tbl, aes(x = Num, color = Text_type)) +
 
 ```{r}
 #| label: calculate-observed-
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 meta_obs <-
   meta_spec |>
@@ -306,8 +306,8 @@ meta_obs
 
 ```{r}
 #| label: generate-null-distribution
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 meta_null <-
   meta_spec |>
@@ -323,8 +323,8 @@ meta_null |> visualize() +
 
 ```{r}
 #| label: calculate-p-value
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 meta_p <-
   meta_null |>
@@ -337,8 +337,8 @@ meta_p
 
 ```{r}
 #| label: generate-resampling-distribution
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 meta_boot <-
   meta_spec |>
@@ -352,8 +352,8 @@ meta_boot |> visualize()
 
 ```{r}
 #| label: calculate-confidence-interval
-#| message: True
-#| echo: True
+#| message: true
+#| echo: true
 
 meta_ci <-
   meta_boot |>

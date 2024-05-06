@@ -1,21 +1,28 @@
 ---
 title: "Article"
-date: 2024-02-20
+date: 2024-05-06
 author:
-  - name: "Your Name"
-    email: youremail@school.edu
-    affiliation: "Your affiliation"
+  - name: "Sicheng Wang"
+    email: wangs22@wfu.edu
+    affiliation: "Wake Forest University"
 abstract: |
-  This is a sample report. It is a work in progress and will be updated as the semester progresses.
+  Biotechnology sectors have been favored by investors in recent years, but biomedical texts often contain specialized jargon and abbreviations, making them difficult to read. Previous studies on biomedical literature translation mainly targeted biomedical experts, neglecting those without such background. This paper adopts a reader-based translation approach guided by Skopos theory, which aims to translate a text for a specific purpose. As a case study, this paper translates a Nature article “Control of the Activity of CAR-T Cells within Tumors via Focused Ultrasound” from English to Chinese, targeting investors without biomedical expertise. Utilizing Wordfast to ensure accuracy, especially in translating field-specific terms, and abbreviations, this study summarizes and examines translation options to aid non-biomedical investors’ understanding. Based on Hyland's metadiscourse markers, which writers employ to aid readers' comprehension, this paper uses RStudio to count markers utilized in translation, serving as an indicator of our attempts to assist readers’ comprehension. This study serves as a starting point for exploring translation options of biomedical literature for investors without a biomedical background. To bolster these translation options’ practicability, it is suggested to expand the corpus and incorporate feedback from readers.
 keywords:
-  - report
-  - sample
+  - metadiscourse marker
+  - biomedical literacture translation
+  - reader-oriented
+  - Skopos theory
+  - E-C
 citation: true
 format:
   html: default
   pdf:
     number-sections: true
 ---
+
+Loading...
+
+<!--
 
 # Introduction
 
@@ -36,3 +43,5 @@ format:
 # Conclusion
 
 # References
+
+-->

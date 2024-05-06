@@ -1,5 +1,5 @@
 ---
-title: "Reader-Oriented Translation Approach"
+title: "Presentations"
 listing:
   id: presentation-listing
   contents: slides
@@ -22,6 +22,7 @@ title-block-banner: false
 
 ```{r load-packages}
 #| label: load-packages
+#| messgae: false
 
 # Load packages
 library(readr)        # reading/ writing datasets
@@ -85,10 +86,11 @@ Is the number of metadiscourse markers greater in the target text than in the so
 
 - **Acquisition**
 
+1. Read texts
+
 ```{r}
 #| label: read-texts
-#| message: True
-#| echo: True
+#| message: false
 
 CAR_ST_lines <-
   read_lines("data/original/CAR_ST.txt") # reading the text by lines
@@ -101,10 +103,11 @@ CAR_TT_lines <-
   read_lines(file_cn) # reading the text by lines
 ```
 
+2. Write datasets into csv
+
 ```{r}
 #| label: write-files-csv.
-#| message: True
-#| echo: True
+#| message: false
 
 CAR_ST_lines_df <-
   tibble(
@@ -130,8 +133,11 @@ if(!file.exists("data/original/CAR_TT.csv")){write_csv(CAR_TT_lines_df,
   file = "data/original/CAR_TT.csv")}
 ```
 
+3. Preview acquired data
+
 ```{r}
 #| label: preview-acquired
+#| message: false
 
 meta_acq_ST <-
   read_csv("data/original/CAR_ST.csv")
@@ -145,10 +151,11 @@ meta_acq_TT
 
 - **Curation**
 
+1. Tidy the acquired data
+
 ```{r}
 #| label: tidy-data
-#| message: True
-#| echo: True
+#| message: false
 
 CAR_ST_lines_df <-
   CAR_ST_lines_df |>
@@ -167,8 +174,11 @@ CAR_TT_lines_df <-
   )
 ```
 
+2. Preview the curated data
+
 ```{r}
 #| label: preview-curated
+#| message: false
 
 meta_cur_ST <-
   read_csv("data/derived/CAR_ST_curated.csv")
@@ -184,6 +194,7 @@ meta_cur_TT
 
 ```{r}
 #| label: preview-transformed
+#| message: false
 
 meta_num <-
   read_csv("data/derived/meta_num.csv")
@@ -203,6 +214,7 @@ meta_kbl
 
 ```{r}
 #| label: read-files
+#| message: false
 
 meta_tbl <-
   read_csv("data/derived/meta_inf.csv")
@@ -214,8 +226,7 @@ meta_tbl
 
 ```{r}
 #| label: map-hypothesis
-#| message: True
-#| echo: True
+#| message: false
 
 # Dataset
 meta_tbl 
@@ -233,8 +244,7 @@ meta_spec
 
 ```{r}
 #| label: assess-distribution
-#| message: True
-#| echo: True
+#| message: false
 
 # Density plot
 meta_tbl |>
@@ -266,10 +276,11 @@ ggplot(meta_tbl, aes(x = Num, color = Text_type)) +
 
 - **Interrogate**
 
+1. Observed data
+
 ```{r}
-#| label: calculate-observed-
-#| message: True
-#| echo: True
+#| label: calculate-observed
+#| message: false
 
 meta_obs <-
   meta_spec |>
@@ -279,10 +290,11 @@ meta_obs <-
 meta_obs
 ```
 
+2. Null distribution
+
 ```{r}
 #| label: generate-null-distribution
-#| message: True
-#| echo: True
+#| message: false
 
 meta_null <-
   meta_spec |>
@@ -294,10 +306,11 @@ meta_null |> visualize() +
   shade_p_value(obs_stat = meta_obs, direction = "greater")
 ```
 
+3. P-value
+
 ```{r}
 #| label: calculate-p-value
-#| message: True
-#| echo: True
+#| message: false
 
 meta_p <-
   meta_null |>
@@ -306,10 +319,11 @@ meta_p <-
 meta_p
 ```
 
+4. Resampling
+
 ```{r}
 #| label: generate-resampling-distribution
-#| message: True
-#| echo: True
+#| message: false
 
 meta_boot <-
   meta_spec |>
@@ -319,10 +333,11 @@ meta_boot <-
 meta_boot |> visualize()
 ```
 
+5. Confidence interval
+
 ```{r}
 #| label: calculate-confidence-interval
-#| message: True
-#| echo: True
+#| message: false
 
 meta_ci <-
   meta_boot |>

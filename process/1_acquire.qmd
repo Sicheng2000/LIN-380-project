@@ -7,7 +7,7 @@ title: "Acquire data"
 *  Loading `readr` for writing and reading data.
 *  Loading `dplyr` for manipulating data.
 *  Loading `fs` for interacting with file system.
-*    Load `qtalrkit` to generate a `data_origin` file.
+*  Loading `qtalrkit` to generate a `data_origin` file.
 
 ```{r}
 #| label: setup-packages
