@@ -4,8 +4,8 @@ title: "README"
 
 ## Project title
 
-> Include an abstract-style summary of your project here which includes the research area, rationale, aims, and findings. 
+"Reader-Oriented Translation Approach: A Case Study on Translating Biomedical Literature" involves a referential analysis targeting the numbers of metadiscourse markers in the source text and its translation to test the effectiveness of translation methods. The results indicate that there is no statistically significant difference in the numbers of metadiscourse markers between the source and target texts.
 
 ## Reproduce
 
-> Include a step-by-step guide to reproduce your project here. This should include a list of dependencies and instructions on how to run the project.
+Please see `README.md` to find datasets storing place and `renv/renv.lock` to check this project’s R environment.

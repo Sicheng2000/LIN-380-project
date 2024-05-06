@@ -22,12 +22,9 @@ format:
     number-sections: true
 ---
 
-# Research Statement
+# Introduction
 
-## Intro
-
-Against the backdrop of normalized epidemic prevention and control and supported initiatives such as the “Healthy China Initiative,” the urgency and significance of China’s biopharmaceutical industry development have surged [@Sun2022]. Frost & Sullivan reported that the Chinese biopharmaceutical market ranks among the most promising in the global pharmaceutical domain. Venture capital investment has increasingly focused on the biotechnology and healthcare sectors over the past five years [@Fan2021]. Yet, the scarcity of professionals with dual expertise in biomedicine and financial investment stifles innovation in biopharmaceutical firms. Biomedical texts often contain normalization sentences loaded with specialized jargon and abbreviations [@Tian2022], posing challenges for translation [@Zhao2005]. According to @reiss1981type, biomedical texts are considered informative, primarily focused on conveying information. Previous studies have targeted biomedical texts as informative text types for translation analysis, such as @Zhang2023, who analyzed biomedical texts based on the characteristics of informative texts guard by communicative translation theory [@newmark1981approaches]. However,  biomedical texts could also be viewed as operative texts. @Ding2016 summarized translation options based on text function theory [@newmark1988textbook], suggesting that technical texts could also be seen as operative texts. The emphasis on discussing translation options in biomedical texts as informative text types is attributed to the target readers, which primarily comprises scholars, experts, and individuals in the biomedical field [@Tan2020; @Li2012; @Zheng2020]. Few studies focus on readers lacking a biomedical background. @Wang2022 targeted investors without biomedical expertise, while @Wang2020 focused on the general public, and @Pei2017 targeted customers. However, this focus is primarily on genres such as news and prescriptions. There is a gap in research focusing on readers without a biomedical background in biomedical literature. This paper aims to fill this gap by focusing on investors lacking biomedical expertise, summarizing translation options for biomedical literature through the translation of a paper published in Nature titled “Control of the Activity of CAR-T Cells within Tumours via Focused Ultrasound [@wu2021control]” from English to Chinese.  The 
-selected portion includes 3,128 words in total. The choice of this paper is driven by Acoustic Cell Therapy Inc.’s initiative, planning to commence Phase III clinical trials in China and seeking Chinese investors [@Acoustic]. Given the reader-oriented focus of this paper, Skopos theory is used as a guiding framework, aiming to translate a text for a specific purpose and target readers in a particular setting [@du2012brief]. To showcase the efficacy of the translation methods used in this paper for enhancing readers’ understanding, Hyland's metadiscourse markers [@hyland2004metadiscourse] are utilized as a benchmark. According to @Hyland2018, metadiscourse facilitates smooth communication, improves text readability, and fosters reader engagement. Earlier studies revealed that metadiscourse bolsters the propositional content of discourse and enhances its readability [@shi2014research]. @hyland2004metadiscourse emphasized that metadiscourse serves as a bridge between text and readers. @hyland2004disciplinary categorizes metadiscourse into two main types: interactive and interactional. Interactive metadiscourse guides readers through the text based on the writer's interpretations. Interactional metadiscourse, on the other hand, involves the writer more directly in conveying information to the readers. Interactive resources encompass various elements such as transitions (establishing relationships between sentences), frame markers (structuring sequences), endophoric markers (referring to information within the text), evidentials (citing other authorities), and code glosses (rephrasing for clarity). Interactional resources include hedges (introducing vagueness), boosters (emphasizing), attitude markers (indicating the writer's stance), engagement markers (drawing the reader's attention), and self-mentions (references to the author themselves). For translating technical jargon, we suggest to use amplification, whether it involves adding explanations directly into the text or clarifying the meaning of jargon by translating its full name. If adding explanations directly results in an overload of particles, inserting them into brackets then, to prevent disruption of the reading flow. However, for jargon with functions already explained in the source text, additional explanations are unnecessary. For jargon that appear more than twice, we suggest to provide explanations only the first time. For abbreviations, we choose to either replace them or provide explanations. Abbreviations created solely for the convenience of a single paper’s writing are replaced, while those widely used in the biomedical field have explanations added right after them. Borrowing is another option used for biomedical abbreviations' translation. According to @Liu1998, biomedical literature in China features numerous borrowed words, as modern medicine was introduced from abroad after the 18th century. Unified translations have not been established for frequently introduced terms, and English jargon abbreviations are often easier to remember than their Chinese equivalents. For long sentences, splitting them and identifying the main information are recommended. We can highlight the main idea instead of overwhelming the reader with excessive details.
+Against the backdrop of normalized epidemic prevention and control and supported initiatives such as the “Healthy China Initiative,” the urgency and significance of China’s biopharmaceutical industry development have surged [@Sun2022]. Frost & Sullivan reported that the Chinese biopharmaceutical market ranks among the most promising in the global pharmaceutical domain. Venture capital investment has increasingly focused on the biotechnology and healthcare sectors over the past five years [@Fan2021]. Yet, the scarcity of professionals with dual expertise in biomedicine and financial investment stifles innovation in biopharmaceutical firms. Biomedical texts often contain normalization sentences loaded with specialized jargon and abbreviations [@Tian2022], posing challenges for translation [@Zhao2005]. According to @reiss1981type, biomedical texts are considered informative, primarily focused on conveying information. Previous studies have targeted biomedical texts as informative text types for translation analysis, such as @Zhang2023, who analyzed biomedical texts based on the characteristics of informative texts guard by communicative translation theory [@newmark1981approaches]. However,  biomedical texts could also be viewed as operative texts. @Ding2016 summarized translation options based on text function theory [@newmark1988textbook], suggesting that technical texts could also be seen as operative texts. The emphasis on discussing translation options in biomedical texts as informative text types is attributed to the target readers, which primarily comprises scholars, experts, and individuals in the biomedical field [@Tan2020; @Li2012; @Zheng2020]. Few studies focus on readers lacking a biomedical background. @Wang2022 targeted investors without biomedical expertise, while @Wang2020 focused on the general public, and @Pei2017 targeted customers. However, this focus is primarily on genres such as news and prescriptions. There is a gap in research focusing on readers without a biomedical background in biomedical literature. This paper aims to fill this gap by focusing on investors lacking biomedical expertise, summarizing translation options for biomedical literature through the translation of a paper published in Nature titled “Control of the Activity of CAR-T Cells within Tumours via Focused Ultrasound [@wu2021control]” from English to Chinese.  The selected portion includes 3,128 words in total. The choice of this paper is driven by Acoustic Cell Therapy Inc.’s initiative, planning to commence Phase III clinical trials in China and seeking Chinese investors [@Acoustic]. Given the reader-oriented focus of this paper, Skopos theory is used as a guiding framework, aiming to translate a text for a specific purpose and target readers in a particular setting [@du2012brief]. To showcase the efficacy of the translation methods used in this paper for enhancing readers’ understanding, Hyland's metadiscourse markers [@hyland2004metadiscourse] are utilized as a benchmark. According to @Hyland2018, metadiscourse facilitates smooth communication, improves text readability, and fosters reader engagement. Earlier studies revealed that metadiscourse bolsters the propositional content of discourse and enhances its readability [@shi2014research]. @hyland2004metadiscourse emphasized that metadiscourse serves as a bridge between text and readers. @hyland2004disciplinary categorizes metadiscourse into two main types: interactive and interactional. Interactive metadiscourse guides readers through the text based on the writer's interpretations. Interactional metadiscourse, on the other hand, involves the writer more directly in conveying information to the readers. Interactive resources encompass various elements such as transitions (establishing relationships between sentences), frame markers (structuring sequences), endophoric markers (referring to information within the text), evidentials (citing other authorities), and code glosses (rephrasing for clarity). Interactional resources include hedges (introducing vagueness), boosters (emphasizing), attitude markers (indicating the writer's stance), engagement markers (drawing the reader's attention), and self-mentions (references to the author themselves). For translating technical jargon, we suggest to use amplification, whether it involves adding explanations directly into the text or clarifying the meaning of jargon by translating its full name. If adding explanations directly results in an overload of particles, inserting them into brackets then, to prevent disruption of the reading flow. However, for jargon with functions already explained in the source text, additional explanations are unnecessary. For jargon that appear more than twice, we suggest to provide explanations only the first time. For abbreviations, we choose to either replace them or provide explanations. Abbreviations created solely for the convenience of a single paper’s writing are replaced, while those widely used in the biomedical field have explanations added right after them. Borrowing is another option used for biomedical abbreviations' translation. According to @Liu1998, biomedical literature in China features numerous borrowed words, as modern medicine was introduced from abroad after the 18th century. Unified translations have not been established for frequently introduced terms, and English jargon abbreviations are often easier to remember than their Chinese equivalents. For long sentences, splitting them and identifying the main information are recommended. We can highlight the main idea instead of overwhelming the reader with excessive details.
 
 ## Research problem
 Biomedical literature translation methods targeting on layperson especially investors.
@@ -41,14 +38,24 @@ In order to suggest the translation methods used in the source text potentially 
 ## Expected impact
 An initial exploration of biomedical literature translation methods for individuals lacking a biomedical background.
 
-# Data
+# Literature review
+1. @herriman2014metadiscourse compared the metadiscourse markers of English and Swedish in non-fiction texts and their translations. She discovered that transition markers increased in translation samples, reflecting translators' efforts to clarify the texts. Boosters, however, were diminished when translating from Swedish into English. Her analysis relied on metadiscourse markers' frequency and p-values calculated by the Sigil Corpus Frequency Test Wizard to highlight differences in metadiscourse markers between English and Swedish non-fiction texts and their translations.
+
+2. @chou2023representation investigated the disparities between translated and non-translated English texts concerning interactional metadiscourse markers. They analyzed the Freiburg-LOB Corpus of British English and the Corpus of Chinese-English, obtaining frequency scores of metadiscourse markers via the Authorial Voice Analyzer. Their findings revealed that translated texts use fewer hedges, boosters, and attitude markers.
+
+3. @davtalab2012contrastive focused on selected texts from an academic book to examine the contrast between metadiscourse markers in English and Persian. They utilized Anova tests and t-tests to identify significant differences between the metadiscourse markers in both languages. Their analysis concluded that there is no significant difference in metadiscourse markers between English and Persian. 
+
+# Methods
+
+The work flow:
+
+![Procedure](work_flow.png)
 
 The ideal data should be: 
 
 ```{r}
 #| label: idealized-tibble
 #| message: false
-#| echo: false
 
 library(tibble) # creating tibble
 
@@ -66,7 +73,6 @@ I have both the translated text and the source text, and I intend to read them i
 ```{r}
 #| label: read-csv
 #| message: false
-#| echo: false
 
 ST_txt <-
 read.csv("data/derived/CAR_ST_curated.csv")
@@ -89,7 +95,6 @@ Read files
 ```{r}
 #| label: read-texts
 #| message: false
-#| include: false
 
 # Load packages
 library(readr) # writing and reading data
@@ -116,7 +121,6 @@ Write files into `.csv`.
 ```{r}
 #| label: write-files-csv.
 #| message: false
-#| include: false
 
 CAR_ST_lines_df <-
   tibble(
@@ -149,7 +153,6 @@ Tidy
 ```{r}
 #| label: tidy-data
 #| message: false
-#| include: false
 
 CAR_ST_lines_df <-
   CAR_ST_lines_df |>
@@ -173,9 +176,8 @@ CAR_TT_lines_df <-
 1. Read files
 
 ```{r}
-#| label: read-files
+#| label: read-raw-files
 #| message: false
-#| include: false
 
 ST_df <-
   read_csv("data/derived/CAR_ST_curated.csv")
@@ -193,7 +195,6 @@ For English hedges' number
 ```{r}
 #| label: match-hedges-en
 #| message: false
-#| include: false
 
 hedg_may_num <- 
   ST_df |>
@@ -233,7 +234,6 @@ For Mandarin hedges' number
 ```{r}
 #| label: match-hedges-cn
 #| message: false
-#| include: false
 
 hedg_yi_num <- 
   TT_df |>
@@ -270,7 +270,6 @@ For English boosters' number
 ```{r}
 #| label: match-boosters-en
 #| message: false
-#| include: false
 
 bo_es_num <- 
   ST_df |>
@@ -345,7 +344,6 @@ For Mandarin boosters' number
 ```{r}
 #| label: match-boosters-cn
 #| message: false
-#| include: false
 
 bo_bh_num <- 
   TT_df |>
@@ -472,7 +470,6 @@ For English attitude markers' number
 ```{r}
 #| label: match-attitude-markers-en
 #| message: false
-#| include: false
 
 att_dif_num <- 
   ST_df |>
@@ -492,7 +489,6 @@ For Mandarin attitude markers' number
 ```{r}
 #| label: match-attitude -markers-cn
 #| message: false
-#| include: false
 
 att_yw_num <- 
   TT_df |>
@@ -514,7 +510,6 @@ For English engagement markers' number
 ```{r}
 #| label: match-engagement-markers-en
 #| message: false
-#| include: false
 
 eng_gi_num <- 
   ST_df |>
@@ -529,7 +524,6 @@ For Mandarin engagement markers' number
 ```{r}
 #| label: match-engagement -markers-cn
 #| message: false
-#| include: false
 
 eng_sm_num <- 
   TT_df |>
@@ -546,7 +540,6 @@ For English self-mentions' number
 ```{r}
 #| label: match-self-mentions-en
 #| message: false
-#| include: false
 
 sel_we_num <- 
   ST_df |>
@@ -566,7 +559,6 @@ For Mandarin self-mentions' number
 ```{r}
 #| label: match-self-mentions-cn
 #| message: false
-#| include: false
 
 sel_wm_num <- 
   TT_df |>
@@ -583,7 +575,6 @@ For English transitions' number
 ```{r}
 #| label: match-transitions-en
 #| message: false
-#| include: false
 
 tr_ho_num <- 
   ST_df |>
@@ -653,7 +644,6 @@ For Mandarin transitions' number
 ```{r}
 #| label: match-transitions-cn
 #| message: false
-#| include: false
 
 tr_d_num <- 
   TT_df |>
@@ -785,7 +775,6 @@ For English frame markers' number
 ```{r}
 #| label: match-frame-markers-en
 #| message: false
-#| include: false
 
 fr_fi_num <- 
   ST_df |>
@@ -825,7 +814,6 @@ For Mandarin frame markers' number
 ```{r}
 #| label: match-frame-markers-cn
 #| message: false
-#| include: false
 
 fr_sx_num <- 
   TT_df |>
@@ -867,7 +855,6 @@ For English endophoric markers' number
 ```{r}
 #| label: match-endophoric markers-en
 #| message: false
-#| include: false
 
 end_fi_num <- 
   ST_df |>
@@ -897,7 +884,6 @@ For Mandarin endophoric markers' number
 ```{r}
 #| label: match-endophoric -markers-cn
 #| message: false
-#| include: false
 
 end_jt_num <- 
   TT_df |>
@@ -954,7 +940,6 @@ For English code glosses' number
 ```{r}
 #| label: match-code-glosses-en
 #| message: false
-#| include: false
 
 co_fo_num <- 
   ST_df |>
@@ -974,7 +959,6 @@ For Mandarin code glosses' number
 ```{r}
 #| label: match-code-glosses-cn
 #| message: false
-#| include: false
 
 co_j_num <- 
   TT_df |>
@@ -1004,7 +988,6 @@ code_num_CN = co_j_num + co_g_num + co_qz_num + co_bk_num
 ```{r}
 #| label: create-metadiscourse-tibble
 #| message: false
-#| include: false
 
 meta_tbl <- tibble(
   Category = c("hedges", "boosters",  "attitude markers", "engagement markers", "self-mentions", "transitions", "frame markers", "endophoric markers", "code glosses"),
@@ -1024,47 +1007,193 @@ read.csv("data/derived/meta_num.csv")
 trans_tbl
 ```
 
-# Analysis
+## Data Analysis
 
 Based on my inquiry, `Is the number of metadiscourse markers greater in the target text than in the source text?`, my analysis is focused on inferential analysis and univariate analysis by comparing the mean. With a dataset transformed to contain the number of metadiscourse markers in both the source and target texts, I plan to compare them by category to calculate the `p-value` and `confidence interval`. The null hypothesis posits that there is no difference in metadiscourse markers between the target and source texts. The alternative hypothesis is that the number of metadiscourse markers in the target text is greater  than ones in the source text. 
 
-# References
+### Load packages
 
-<!--
+```{r}
+#| label: load-packages
+#| message: false
 
-# Introduction
+# Load packages
+library(tidytext)     # text manipulation
+library(ggplot2)      # plotting
+library(infer)      # for statistical inference
+library(skimr)      # for descriptive statistics
+library(janitor)    # for cross-tabulation
+```
 
-This section introduces the topic of the prospectus, its relevance, and specific research question(s) or hypothesis(es) that will be addressed.
+### Read files
 
-## Literature review
+```{r}
+#| label: read-inf-files
+#| message: false
 
-This section summarizes previous research related to the topic and identifies gaps that the current study aims to address. It is important to provide a comprehensive review of the literature to demonstrate the significance of the research question and the potential contributions of the study [@R-dplyr].
+meta_inf_tbl <-
+  read_csv("data/derived/meta_inf.csv")
 
-The literature review should conclude with a clear statement of the research question or hypothesis that the study aims to address.
+meta__inf_tbl <-
+  meta_inf_tbl |> 
+  mutate(Category = factor(Category))|>
+  mutate(Text_type = factor(Text_type))
 
-# Methods
+meta_inf_tbl 
+```
 
-This section describes the data preparation and analysis methods that will be used to address the research question or hypothesis. It should include a detailed description of the data acquisition, data organization, and data enrichment process, as well as the feature selection and engineering, analysis techniques, and evaluation process.
+### Identify
 
-## Data preparation
+```{r}
+#| label: map-hypothesis
+#| message: false
 
-This section describes the process of acquiring, organizing, and enriching the data that will be used to address the research question or hypothesis. It should include a detailed description of the data sources, the process of collecting and cleaning the data, and any additional data enrichment steps that will be taken to prepare the data for analysis.
+# Dataset
+meta_inf_tbl 
 
-## Data analysis
+# Specify the relationship
+meta_spec <-
+  meta__inf_tbl |>
+  specify(Num ~ Text_type)
 
-This section describes the feature selection and engineering, analysis techniques, and evaluation process that will be used to address the research question or hypothesis. It should include a detailed description of the features that will be used in the analysis, the specific analysis techniques that will be applied, and the process of evaluating the results.
+# Preview
+meta_spec
+```
+
+### Inspect
+
+```{r}
+#| label: assess-distribution
+#| message: false
+
+# Density plot
+meta_inf_tbl |>
+  ggplot(aes(x = Num, fill = Text_type)) +
+  geom_density(alpha = 0.75) +
+  labs(
+  x = "Metadiscourse markers number",
+  y = "Density",
+  fill = "Text type"
+  )
+
+meta__inf_tbl |>
+  ggplot(aes(x = Text_type, y = Num, fill = Text_type)) +
+  geom_boxplot(notch = TRUE) +
+  labs(
+  x = "Text type",
+  y = "Metadiscourse markers number",
+  fill = "Text type"
+  )
+
+ggplot(meta__inf_tbl, aes(x = Num, color = Text_type)) +
+  stat_ecdf() +
+  labs(
+  x = "Metadiscourse markers number",
+  y = "ECDF",
+  color = "Text type"
+  )
+```
+
+### Interrogate
+
+#### Observed statistic
+
+```{r}
+#| label: calculate-observed-statistic
+#| message: false
+
+meta_obs <-
+  meta_spec |>
+  # Target Text - Source Text
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_obs
+```
+
+#### Null distribution
+
+```{r}
+#| label: generate-null-distribution
+#| message: false
+
+meta_null <-
+  meta_spec |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_null |> visualize() +
+  shade_p_value(obs_stat = meta_obs, direction = "greater")
+```
+
+#### P-value
+
+```{r}
+#| label: calculate-p-value
+#| message: false
+
+meta_p <-
+  meta_null |>
+  get_p_value(obs_stat = meta_obs, direction = "greater")
+
+meta_p
+```
+
+#### Resampling distribution
+
+```{r}
+#| label: generate-resampling-distribution
+#| message: false
+
+meta_boot <-
+  meta_spec |>
+  generate(reps = 1000, type = "bootstrap") |>
+  calculate(stat = "diff in means", order = c("TT", "ST"))
+
+meta_boot |> visualize()
+```
+
+#### Confidence interval
+
+```{r}
+#| label: calculate-confidence-interval
+#| message: false
+
+meta_ci <-
+  meta_boot |>
+  get_confidence_interval(level = 0.95)
+
+meta_ci
+```
+
+### Interpret
+
+```{r}
+#| label: evaluate
+#| message: false
+
+# Evaluate the p-value
+meta_p
+
+# Evaluate the confidence interval
+meta_ci
+
+meta_boot |>
+  visualize() +
+  shade_confidence_interval(meta_ci)
+```
 
 # Expected results
 
-This section presents the hypothesized findings based on the research question and analysis methods. It should include a clear statement of the expected results and their potential implications for the field of Linguistics and language science.
+There is no difference in metadiscourse markers between the target and source texts.
 
 # Communication plan
 
-This section describes the plan for reporting, presenting, and sharing the results of the study. It should include a detailed description of the intended audience for the study, the format of the final report, and any plans for sharing the results with the broader community.
+For the public, I created a PowerPoint presentation and slideshows in Quarto using `reveal.js`. It contains the elements of `intro`, `literature review`, `research question`, `methods`, `findings`. Since I'm presenting to individuals outside my field, I explain the meaning of terminologies specific to our field. To share with peers, I push my repository to GitHub with `renv.lock` and `README` to ensure reproducibility. The final result is in HTML format.
 
 # Conclusion
 
-This section provides a summary of the research proposal and its potential impact on the field of Linguistics and language science. It should include a clear statement of the significance of the research question and the potential contributions of the study.
+The translation methods we recommended did not significantly assist the comprehension of the target readers. However, it's important to note that this conclusion is based on a small dataset. Further testing with larger corpora or collaboration with target readers to gather feedback could provide more insights into the effectiveness of the translation methods. In addition, future researchers targetting on biomedical literature translation could explore alternative perspectives to enhance comprehension for the target audience.
 
 # References
 
@@ -1073,5 +1202,26 @@ This section provides a summary of the research proposal and its potential impac
 
 # Appendix {.appendix}
 
-This section includes any additional information that is relevant to the prospectus, such as data sources, code, or other supplementary materials.
--->
+![Hyland's Metadiscourse Model](meta.png)
+
+![Hyland's Metadiscourse Model in Chinese](meta_CN.png)
+
+```{r}
+#| label: customize-meta-category
+#| message: false
+#| echo: false
+
+EN_meta <- tibble(
+  Category = c("hedges", "hedges", "hedges", "hedges", "hedges", "hedges", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "attitude markers", "attitude markers", "engagement markers", "self-mentions", "self-mentions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "frame markers", "frame markers", "frame markers", "frame markers", "frame markers", "frame markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "code glosses", "code glosses"),
+  EN_Word = c("may", "probably", "slightly", "relatively", "suggest", "typically", "especially", "substantially", "dramatically", "significantly", "merely", "without any", "demonstrate", "indicate", "verify", "particularly", "in particular", "precisely", "very", "difficult", "significant", "given", "we", "our", "however", "while", "additionally", "and", "also", "moreover", "but", "still", "in contrast to", "in contrast", "therefore", "thus", "as such", "first", "then", "further", "here", "taken together", "recently", "Fig", "Video", "Methods", "as described above", "for instance", "including")
+)
+
+CN_meta <- tibble(
+  Category = c("hedges", "hedges", "hedges", "hedges", "hedges", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "boosters", "attitude markers", "attitude markers", "engagement markers", "self-mentions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "transitions", "frame markers", "frame markers", "frame markers", "frame markers", "frame markers", "frame markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "endophoric markers", "code glosses", "code glosses", "code glosses", "code glosses"),
+  CN_Word = c("可能", "几乎", "略有", "一定程度", "可以说是", "尤其", "大大", "明显", "显著", "仅", "只有", "均不", "揭示", "证明", "证实", "验证", "更是", "不会", "无法", "不再", "无需", "不对", "必需", "就能", "任何", "最", "极", "不存在", "难", "有望", "说明", "我们", "然而", "而", "同时", "且", "和", "以及", "也", "并", "但", "但是", "仍", "相比", "从而", "这样一来", "所以", "因此", "如此", "虽然", "由于", "因为", "随后", "如果", "若", "或", "首先", "先是", "进一步", "这是", "第一次/第二次", "第一部分/第二部分", "见图", "如图", "补充数据图", "附录图", "附录视频", "技术原理部分", "方案", "上述", "先前", "即", "其中", "包括", "该")
+)
+
+EN_meta
+CN_meta
+
+```

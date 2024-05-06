@@ -1,10 +1,10 @@
 Package: quarto_website
-Title: Project title
+Title: Reader-Oriented Translation Approach
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Sicheng", "Wang", , "Wangs22@wfu.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Short description of the project
+Description: The main file used in the project is `index.qmd`. This project counted metadiscourse markers according to Sicheng Wang's categorization based on the selected text `Control of the activity of CAR-T cells within tumours via focused ultrasound` and its translation. The main purpose is to test the biomedical literature translation methods for lay person by comparing the number of metadiscourse markers in the source text and its translation. The derived data files are stored in the `data/derived` which includes the texts in ST and TT, metadiscourse numbers in ST and TT and dataset for inferential analysis.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

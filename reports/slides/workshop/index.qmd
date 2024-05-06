@@ -204,7 +204,7 @@ meta_kbl <-
 meta_kbl
 ```
 
-# Data analysis methods {.smaller}
+# Data analysis methods
 
 ## Preview {.smaller}
 
@@ -319,7 +319,7 @@ meta_null |> visualize() +
   shade_p_value(obs_stat = meta_obs, direction = "greater")
 ```
 
-## P-value {.smaller}
+## P-value 
 
 ```{r}
 #| label: calculate-p-value
@@ -348,7 +348,7 @@ meta_boot <-
 meta_boot |> visualize()
 ```
 
-## Confidence interval {.smaller}
+## Confidence interval 
 
 ```{r}
 #| label: calculate-confidence-interval
@@ -379,8 +379,8 @@ meta_boot |>
   shade_confidence_interval(meta_ci)
 ```
 
-# Expected results {.smaller}
+# Expected results
 
 There is no difference in metadiscourse markers between the target and source texts.
 
-# References {.smaller}
+# References 
